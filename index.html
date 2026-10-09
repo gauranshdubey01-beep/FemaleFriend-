@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#4A00E0">
+<title>For My Twin 💜</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💜%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Pacifico&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#4A00E0; --violet:#7B2FBE; --lav:#E6E6FA; --ink:#1d0546;
+  --glass:rgba(255,255,255,.12); --glass-strong:rgba(255,255,255,.2);
+  --txt:#fbf8ff; --soft:rgba(230,230,250,.82);
+  --sat:env(safe-area-inset-top,0px); --sab:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;background:#2a0a5e}
+body{font-family:'Quicksand',system-ui,sans-serif;color:var(--txt);position:relative;touch-action:manipulation}
+button{font:inherit;color:inherit;border:0;background:none;touch-action:manipulation;cursor:pointer}
+
+/* background */
+.bg{position:fixed;inset:0;background:linear-gradient(160deg,#2a0a5e,#4A00E0 45%,#7B2FBE);overflow:hidden;z-index:0}
+.blob{position:absolute;width:75vmax;height:75vmax;border-radius:50%;filter:blur(60px);opacity:.55;will-change:transform;animation:drift 22s ease-in-out infinite alternate}
+.b1{background:radial-gradient(circle,#c084fc,transparent 65%);top:-25vmax;left:-20vmax}
+.b2{background:radial-gradient(circle,#7B2FBE,transparent 65%);bottom:-30vmax;right:-25vmax;animation-duration:28s;animation-delay:-8s}
+.b3{background:radial-gradient(circle,#f0abfc,transparent 65%);width:50vmax;height:50vmax;top:35%;left:30%;opacity:.3;animation-duration:34s;animation-delay:-14s}
+@keyframes drift{to{transform:translate3d(14vmax,10vmax,0) scale(1.15)}}
+.bubbles{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.bubble{position:absolute;bottom:-60px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.55),rgba(255,255,255,.08) 60%);border:1px solid rgba(255,255,255,.25);animation:rise linear infinite;opacity:0}
+@keyframes rise{0%{transform:translate3d(0,0,0);opacity:0}10%{opacity:.8}90%{opacity:.5}100%{transform:translate3d(var(--dx),-115vh,0);opacity:0}}
+
+/* app shell */
+.app{position:relative;z-index:2;height:100dvh;max-width:600px;margin:0 auto;display:flex;flex-direction:column;padding:calc(var(--sat) + 12px) 16px 0}
+header{display:flex;align-items:center;justify-content:space-between;min-height:44px;padding:0 4px 10px}
+.logo{font-family:'Pacifico',cursive;font-size:clamp(1.3rem,5vw,1.7rem);text-shadow:0 2px 14px rgba(230,230,250,.5)}
+.pill{font-size:.78rem;font-weight:600;padding:8px 14px;border-radius:99px;color:var(--lav)}
+.par{position:absolute;inset:-12%;transition:transform .5s cubic-bezier(.32,.72,0,1);will-change:transform}
+main{flex:1;min-height:0;position:relative;overflow:hidden;margin:0 -16px}
+.sec{position:absolute;inset:0;display:flex;flex-direction:column;gap:26px;padding:24px 16px 32px;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;visibility:hidden;pointer-events:none;will-change:transform}
+.sec::-webkit-scrollbar{display:none}
+.sec.active{visibility:visible;pointer-events:auto}
+.sec>*{flex-shrink:0}
+.sec>:first-child{margin-top:auto}
+.sec>:last-child{margin-bottom:auto}
+
+/* liquid glass */
+.glass{position:relative;overflow:hidden;border-radius:28px;padding:clamp(20px,6vw,30px);
+  background:linear-gradient(145deg,rgba(255,255,255,.2),rgba(255,255,255,.07));
+  -webkit-backdrop-filter:blur(16px) saturate(160%);backdrop-filter:blur(16px) saturate(160%);
+  box-shadow:0 10px 34px rgba(30,5,80,.35),inset 0 1px 0 rgba(255,255,255,.35);
+  animation:breathe 7s ease-in-out infinite}
+.glass:nth-child(2){animation-delay:-2.3s}.glass:nth-child(3){animation-delay:-4.6s}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.2px;pointer-events:none;
+  background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(230,230,250,.06) 40%,rgba(255,255,255,.1) 60%,rgba(255,255,255,.6));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.glass::after{content:"";position:absolute;top:-60%;left:-40%;width:80%;height:200%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.14),transparent);transform:rotate(12deg) translate3d(-120%,0,0);animation:sheen 9s ease-in-out infinite}
+@keyframes sheen{0%,60%{transform:rotate(12deg) translate3d(-120%,0,0)}100%{transform:rotate(12deg) translate3d(380%,0,0)}}
+@keyframes breathe{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-5px,0)}}
+.sec.active > .glass.main{
+  -webkit-backdrop-filter:blur(30px) saturate(190%);backdrop-filter:blur(30px) saturate(190%);
+  background:linear-gradient(145deg,rgba(255,255,255,.3),rgba(230,230,250,.1));
+  box-shadow:0 12px 36px rgba(123,47,190,.5),0 0 28px rgba(230,230,250,.25),inset 0 1px 0 rgba(255,255,255,.55)}
+
+.ripple{position:absolute;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(255,255,255,.65),rgba(230,230,250,.15) 60%,transparent 70%);transform:scale(0);animation:rip .8s ease-out forwards}
+@keyframes rip{to{transform:scale(1);opacity:0}}
+
+h1,h2{line-height:1.2;font-weight:700}
+h1{font-size:clamp(1.7rem,7.4vw,2.5rem)}
+h2{font-size:clamp(1.3rem,5.6vw,1.8rem)}
+p{font-size:clamp(.95rem,3.9vw,1.08rem);line-height:1.6;color:var(--soft)}
+.big-heart{font-size:clamp(2.6rem,13vw,3.8rem);display:inline-block;animation:beat 2.4s ease-in-out infinite;filter:drop-shadow(0 6px 16px rgba(200,140,255,.7))}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.18)}30%{transform:scale(1)}45%{transform:scale(1.12)}}
+.stack{display:flex;flex-direction:column;gap:12px}
+.center{text-align:center;align-items:center}
+
+.btn{position:relative;overflow:hidden;min-height:56px;width:100%;padding:14px 22px;border-radius:20px;font-weight:700;font-size:clamp(1.05rem,4.4vw,1.2rem);
+  display:flex;align-items:center;justify-content:center;gap:8px;transition:transform .2s,box-shadow .2s;touch-action:manipulation}
+.btn:active{transform:scale(.96)}
+.btn.yes{background:linear-gradient(135deg,#b57bff,#7B2FBE 55%,#4A00E0);box-shadow:0 8px 24px rgba(74,0,224,.55),inset 0 1px 0 rgba(255,255,255,.5)}
+.btn.no{background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.4)}
+.btn.ghost{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35)}
+.btns{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.q{font-size:clamp(1.6rem,7.6vw,2.3rem);font-weight:700;line-height:1.25;text-shadow:0 2px 18px rgba(230,230,250,.45)}
+
+.mem{display:flex;gap:14px;align-items:center;min-height:44px}
+.mem span{font-size:1.7rem;flex:none}
+.mem b{display:block;margin-bottom:2px;font-size:1.02rem}
+.mem p{font-size:.92rem;line-height:1.45}
+.grid{display:grid;gap:12px}
+
+.sticky{position:relative;width:min(88%,290px);padding:22px 18px 16px;background:linear-gradient(160deg,#f6ecff,#e3ccff);color:#3a0a75;font-family:'Caveat',cursive;font-weight:700;font-size:clamp(1.3rem,5.6vw,1.6rem);line-height:1.2;border-radius:3px 3px 20px 3px;box-shadow:0 12px 24px rgba(30,5,80,.45);transform:rotate(-2.5deg);align-self:flex-start;transition:transform .45s cubic-bezier(.32,.72,0,1)}
+.sticky.s2{background:linear-gradient(160deg,#ffe4f3,#f9b8dd);color:#6b0a52;transform:rotate(2.5deg);align-self:flex-end}
+.sticky::before{content:"";position:absolute;top:-9px;left:50%;width:70px;height:20px;margin-left:-35px;background:rgba(255,255,255,.55);transform:rotate(-3deg);border-radius:2px;box-shadow:0 1px 4px rgba(30,5,80,.2)}
+.sticky:active{transform:rotate(0deg) scale(1.04)}
+.notes{display:flex;flex-direction:column;gap:12px;text-align:left}
+.notes p{display:flex;gap:10px;align-items:flex-start;font-size:clamp(.95rem,3.9vw,1.05rem)}
+.notes p span{flex:none;font-size:1.25rem;line-height:1.4}
+/* bottom nav */
+nav{position:relative;display:flex;gap:6px;margin:0 -4px;padding:8px 8px calc(var(--sab) + 10px);border-radius:26px 26px 0 0;
+  background:rgba(40,8,100,.35);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.2);border-bottom:0}
+nav button{flex:1;min-height:56px;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:.72rem;font-weight:600;color:var(--soft);position:relative;overflow:hidden;transition:background .3s,color .3s}
+nav button i{font-style:normal;font-size:1.3rem;transition:transform .3s}
+nav button.on{color:#fff}
+.ind{position:absolute;left:0;top:8px;width:0;height:56px;border-radius:18px;pointer-events:none;will-change:transform;transition:transform .5s cubic-bezier(.32,.72,0,1);background:linear-gradient(145deg,rgba(255,255,255,.3),rgba(255,255,255,.1));box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 18px rgba(230,230,250,.3)}
+nav button.on i{transform:translateY(-2px) scale(1.12)}
+
+/* overlays */
+.ov{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s;background:rgba(30,5,80,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.ov.show{opacity:1;visibility:visible}
+.mwrap{position:relative;width:min(100%,380px)}
+.modal{width:100%;text-align:center;animation:none}
+.ov.show .mwrap{animation:shake .6s cubic-bezier(.36,.07,.19,.97)}
+p.small{font-size:.82rem;line-height:1.4;color:var(--lav)}
+.sticky.hang{position:absolute;right:-8px;bottom:-54px;width:180px;padding:22px 14px 14px;transform:rotate(5deg);align-self:auto;z-index:2}
+@keyframes shake{0%{transform:scale(.7);opacity:0}30%{transform:scale(1.05) rotate(-2deg);opacity:1}45%{transform:translateX(-8px)}60%{transform:translateX(8px)}75%{transform:translateX(-4px)}100%{transform:none}}
+.ov.win{background:radial-gradient(circle at 50% 40%,rgba(123,47,190,.85),rgba(42,10,94,.95))}
+.win .thanks{font-family:'Pacifico',cursive;font-size:clamp(2rem,10vw,3.4rem);line-height:1.3;text-align:center;text-shadow:0 4px 30px rgba(230,230,250,.7);transform:scale(.6);opacity:0}
+.win.show .thanks{animation:pop .9s .1s cubic-bezier(.2,1.4,.4,1) forwards}
+@keyframes pop{to{transform:scale(1);opacity:1}}
+.fx{position:fixed;left:0;top:0;z-index:30;pointer-events:none;will-change:transform,opacity}
+
+@media (min-width:768px){
+  .app{padding-left:24px;padding-right:24px}
+  .btns{flex-direction:row}
+  .grid{grid-template-columns:1fr 1fr}
+  .grid .full{grid-column:1/-1}
+  .glass{padding:34px}
+}
+@media (max-height:640px){.glass{padding:16px}.sec{gap:16px}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+<div class="bg"><div class="par" id="par"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div></div>
+<div class="bubbles" id="bubbles"></div>
+
+<div class="app">
+  <header>
+    <div class="logo">Twin Forever</div>
+    <div class="pill glass" style="padding:8px 14px;border-radius:99px;animation:none">💜 just for you</div>
+  </header>
+
+  <main id="main">
+    <section class="sec active" id="home">
+      <div class="glass main stack center">
+        <div class="big-heart">💜</div>
+        <h1>Hey you, welcome to our little corner</h1>
+        <p>This whole page was made with love for my Female Friend (Twin). Take a look around, then I have one question for you.</p>
+        <button class="btn yes" data-go="ask">Go to my question 💜</button>
+      </div>
+      <div class="glass stack">
+        <h2>Why a website?</h2>
+        <p>Because my Female Friend (Twin) deserves something more special than a text message.</p>
+      </div>
+      <div class="sticky">Fair warning: she can be annoying to everyone else 😌 but not to me 💜</div>
+    </section>
+
+    <section class="sec" id="ask">
+      <div class="glass main stack center">
+        <p style="font-weight:600">Questions for you:</p>
+        <div class="big-heart">✨</div>
+        <div class="q">Wanna be my Twin Forever?</div>
+        <div class="btns">
+          <button class="btn yes" id="yes">Yes 💜</button>
+          <button class="btn no" id="no">NO</button>
+        </div>
+      </div>
+      <div class="sticky s2">No pressure... okay, a little pressure 👀</div>
+    </section>
+
+    <section class="sec" id="mem">
+      <div class="glass main stack">
+        <h2>Memories 📸</h2>
+        <div class="grid">
+          <div class="mem"><span>🌙</span><div><b>Late-night talks</b><p>The ones that never really needed an ending.</p></div></div>
+          <div class="mem"><span>😂</span><div><b>Laughing for no reason</b><p>The kind only the two of us understand.</p></div></div>
+          <div class="mem full"><span>🎀</span><div><b>Matching without trying</b><p>Same mood, same words, same everything. That's the twin thing.</p></div></div>
+        </div>
+      </div>
+      <div class="sticky">Best time spending? Literally anything with her ✨</div>
+    </section>
+
+    <section class="sec" id="about">
+      <div class="glass main stack center">
+        <div class="big-heart">👯‍♀️</div>
+        <h2>About Us</h2>
+        <p>Two people, one brain cell, endless inside jokes. Every Female Friend (Twin) story starts with someone who gets you, and mine starts with you.</p>
+      </div>
+      <div class="glass stack">
+        <h2>Franky notes 📝</h2>
+        <div class="notes">
+          <p><span>😅</span>Honestly, she can be really annoying to everyone else.</p>
+          <p><span>💜</span>But for me, time with her is the best time I spend, every time.</p>
+          <p><span>🫶</span>Nothing is boring when she's around. Even doing nothing is fun.</p>
+          <p><span>👯‍♀️</span>My Female Friend (Twin): annoying to the world, perfect for me.</p>
+        </div>
+      </div>
+      <div class="sticky s2">Twin rule #1: be as annoying as you want. I'm the one who loves it 💜</div>
+      <div class="glass stack center">
+        <p style="color:#fff;font-weight:600">Thank you for being you 💜</p>
+      </div>
+    </section>
+  </main>
+
+  <nav id="nav"><span class="ind" id="ind"></span>
+    <button class="on" data-go="home"><i>🏠</i>Home</button>
+    <button data-go="ask"><i>💌</i>Question</button>
+    <button data-go="mem"><i>📸</i>Memories</button>
+    <button data-go="about"><i>👯‍♀️</i>About Us</button>
+  </nav>
+</div>
+
+<div class="ov" id="sorry"><div class="mwrap"><div class="glass modal stack center">
+  <div class="big-heart">🥺</div>
+  <h2>Sorry you have to be 💜</h2>
+  <p class="small">Some questions are meant to be accepted 💜🥺✨</p>
+  <button class="btn ghost" id="close">Okay, Okay I will 🥺💜✨</button>
+</div>
+<div class="sticky s2 hang">Really? 🥺👉👈</div></div></div>
+
+<div class="ov win" id="win"><div class="thanks">Thanks a lottttttt! 💜</div></div>
+
+<script>
+(function(){
+  var $=function(s,c){return (c||document).querySelector(s)}, $$=function(s){return [].slice.call(document.querySelectorAll(s))};
+
+  // bubbles
+  var bw=$('#bubbles');
+  for(var i=0;i<16;i++){
+    var b=document.createElement('span'), s=8+Math.random()*34;
+    b.className='bubble';
+    b.style.cssText='width:'+s+'px;height:'+s+'px;left:'+Math.random()*100+'%;--dx:'+(Math.random()*80-40)+'px;animation-duration:'+(12+Math.random()*16)+'s;animation-delay:-'+Math.random()*20+'s';
+    bw.appendChild(b);
+  }
+
+  // navigation
+  var order=['home','ask','mem','about'], cur='home', anims=[], ind=$('#ind'), par=$('#par'),
+      EASE='cubic-bezier(0.32,0.72,0,1)', reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function settle(){
+    anims.forEach(function(a){a.onfinish=null;a.cancel()}); anims=[];
+    $$('.sec').forEach(function(s){s.classList.toggle('active',s.id===cur)});
+  }
+  function place(id){
+    var b=$('nav button[data-go="'+id+'"]');
+    ind.style.width=b.offsetWidth+'px'; ind.style.height=b.offsetHeight+'px';
+    ind.style.transform='translate3d('+b.offsetLeft+'px,0,0)';
+    par.style.transform='translate3d('+(-order.indexOf(id)*4)+'vw,0,0)';
+  }
+  function go(id){
+    if(id===cur) return;
+    settle();
+    var dir=order.indexOf(id)>order.indexOf(cur)?1:-1, out=$('#'+cur), inn=$('#'+id);
+    cur=id; inn.scrollTop=0; inn.classList.add('active');
+    var o={duration:reduce?1:480,easing:EASE,fill:'forwards'};
+    anims=[
+      inn.animate([{transform:'translate3d('+(100*dir)+'%,0,0) scale(.95)'},{transform:'translate3d(0,0,0) scale(1)'}],o),
+      out.animate([{transform:'translate3d(0,0,0) scale(1)'},{transform:'translate3d('+(-100*dir)+'%,0,0) scale(.95)'}],o)
+    ];
+    anims[0].onfinish=function(){if(cur===id)settle()};
+    $$('nav button').forEach(function(n){n.classList.toggle('on',n.dataset.go===id)});
+    place(id);
+  }
+  function initPill(){
+    ind.style.transition='none'; par.style.transition='none'; place(cur);
+    void ind.offsetWidth; ind.style.transition=''; par.style.transition='';
+  }
+  initPill(); addEventListener('resize',initPill); addEventListener('load',initPill);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(initPill);
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('[data-go]'); if(t) go(t.dataset.go);
+  });
+
+  // ripple on tap
+  document.addEventListener('pointerdown',function(e){
+    var el=e.target.closest('.btn,nav button,.glass'); if(!el) return;
+    var r=el.getBoundingClientRect(), d=Math.max(r.width,r.height)*2.2, p=document.createElement('span');
+    p.className='ripple';
+    p.style.cssText='width:'+d+'px;height:'+d+'px;left:'+(e.clientX-r.left-d/2)+'px;top:'+(e.clientY-r.top-d/2)+'px';
+    el.appendChild(p); setTimeout(function(){p.remove()},850);
+  });
+
+  // particles
+  function burst(list,n,spread){
+    var w=innerWidth,h=innerHeight;
+    for(var i=0;i<n;i++){
+      var f=document.createElement('div'); f.className='fx';
+      f.textContent=list[i%list.length]; f.style.fontSize=(16+Math.random()*22)+'px';
+      document.body.appendChild(f);
+      var a=Math.random()*Math.PI*2, dist=(spread||1)*(w*.25+Math.random()*w*.55), x0=w/2, y0=h*.42;
+      var dx=Math.cos(a)*dist, dy=Math.sin(a)*dist*1.1-h*.15;
+      f.animate([
+        {transform:'translate('+x0+'px,'+y0+'px) scale(.3) rotate(0deg)',opacity:1},
+        {transform:'translate('+(x0+dx)+'px,'+(y0+dy)+'px) scale(1.1) rotate('+(Math.random()*360-180)+'deg)',opacity:1,offset:.55},
+        {transform:'translate('+(x0+dx*1.1)+'px,'+(y0+dy+h*.35)+'px) scale(.8) rotate('+(Math.random()*540-270)+'deg)',opacity:0}
+      ],{duration:1800+Math.random()*1200,easing:'cubic-bezier(.2,.7,.3,1)',fill:'forwards'}).onfinish=(function(el){return function(){el.remove()}})(f);
+    }
+  }
+
+  // NO
+  var sorry=$('#sorry'), t1;
+  function closeSorry(){sorry.classList.remove('show');clearTimeout(t1);go('ask')}
+  $('#no').addEventListener('click',function(){
+    sorry.classList.add('show');
+  });
+  $('#close').addEventListener('click',closeSorry);
+  
+
+  // YES
+  var win=$('#win');
+  $('#yes').addEventListener('click',function(){
+    win.classList.add('show');
+    burst(['💜','💖','✨','🎀','💫','🌸'],34,1);
+    setTimeout(function(){burst(['💜','✨','💕','🎉'],24,1.2)},700);
+    setTimeout(function(){win.classList.remove('show');go('mem')},2600);
+  });
+})();
+</script>
+</body>
+</html>
